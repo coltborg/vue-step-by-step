@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Learn Vue 2: Step by Step</title>
+</head>
+<body>
+  <div id="root">
+    <ul>
+      <li v-for="name in names" v-text="name"></li>
+    </ul>
+    <input v-model="newName" type="text">
+    <button @click="addName" type="button">Add name</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/vue@2.4.1"></script>
+  <script>
+    var app = new Vue({
+      el: '#root',
+      data: {
+        newName: '',
+        names: ["joe", "mary", 'jane', 'jack']
+      },
+      methods: {
+        addName() {
+          this.names.push(this.newName);
+          this.newName = '';
+        },
+      },
+    });
+  </script>
+</body>
+</html>
