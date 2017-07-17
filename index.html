@@ -5,14 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Learn Vue 2: Step by Step</title>
+  <style>
+    .color-red { color: red; }
+    .color-blue { color: blue; }
+    .is-loading { background-color: red; }
+  </style>
 </head>
 <body>
   <div id="root">
-    <ul>
-      <li v-for="name in names" v-text="name"></li>
-    </ul>
-    <input v-model="newName" type="text">
-    <button @click="addName" type="button">Add name</button>
+    <button :class="{ 'is-loading': isLoading }" @click="toggleClass">Click Me</button>
+    <button :disabled="{ isDisabled }" @click="toggleDisable">Click to disable me</button>
+    <h1 :class="className">Hello World</h1>
   </div>
 
   <!-- Scripts -->
@@ -21,13 +24,19 @@
     var app = new Vue({
       el: '#root',
       data: {
-        newName: '',
-        names: ["joe", "mary", 'jane', 'jack']
+        title: 'Now the title is being set through JavaScript',
+        className: 'color-red',
+        isLoading: false,
+        isDisabled: false,
       },
       methods: {
-        addName() {
-          this.names.push(this.newName);
-          this.newName = '';
+        toggleClass() {
+          this.isLoading = true;
+        },
+        toggleDisable() {
+          this.isDisabled
+            ? this.isDisabled = !this.isDisabled
+            : this.isDisabled = !this.isDisabled;
         },
       },
     });
