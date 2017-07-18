@@ -8,11 +8,26 @@
 </head>
 <body>
   <div id="root">
+    <h1>All tasks</h1>
     <ul>
-      <li v-for="name in names" v-text="name"></li>
+      <li v-for="task in tasks" v-text="task.description"></li>
     </ul>
-    <input v-model="newName" type="text">
-    <button @click="addName" type="button">Add name</button>
+    <h1>Incomplete tasks</h1>
+    <ul>
+      <li v-for="task in incompleteTasks" v-text="task.description"></li>
+    </ul>
+    <!-- TODO -->
+    <h2>Homework:</h2>
+    <ul>
+      <li>Have three lists:</li>
+      <li>Have a checkbox to complete a task</li>
+      <ul>
+        <li>All tasks</li>
+        <li>incomplete tasks</li>
+        <li>complete tasks</li>
+      </ul>
+    </ul>
+    <!-- /TODO -->
   </div>
 
   <!-- Scripts -->
@@ -21,14 +36,37 @@
     var app = new Vue({
       el: '#root',
       data: {
-        newName: '',
-        names: ["joe", "mary", 'jane', 'jack']
+        tasks: [
+          {
+            description: 'Go to the store',
+            completed: true
+          },
+          {
+            description: 'Finish screencast',
+            completed: false
+          },
+          {
+            description: 'Make donation',
+            completed: false
+          },
+          {
+            description: 'Clear inbox',
+            completed: true
+          },
+          {
+            description: 'Make dinner',
+            completed: false
+          },
+          {
+            description: 'Clean room',
+            completed: true
+          },
+        ],
       },
-      methods: {
-        addName() {
-          this.names.push(this.newName);
-          this.newName = '';
-        },
+      computed: {
+        incompleteTasks() {
+          return this.tasks.filter(task => !task.completed);
+        }
       },
     });
   </script>
