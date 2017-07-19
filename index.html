@@ -10,24 +10,37 @@
   <div id="root">
     <h1>All tasks</h1>
     <ul>
-      <li v-for="task in tasks" v-text="task.description"></li>
+      <li v-for="task in tasks">
+        <span>{{ task.description }}</span>
+        <button type="button" @click="toggleCheck(task)">Toggle 🦉</button>
+      </li>
     </ul>
     <h1>Incomplete tasks</h1>
     <ul>
-      <li v-for="task in incompleteTasks" v-text="task.description"></li>
+      <li v-for="task in incompleteTasks">
+        <span>{{ task.description }}</span>
+        <button type="button" @click="toggleCheck(task)">Toggle 🦉</button>
+      </li>
     </ul>
-    <!-- TODO -->
-    <h2>Homework:</h2>
+    <h1>Complete tasks</h1>
     <ul>
-      <li>Have three lists:</li>
-      <li>Have a checkbox to complete a task</li>
-      <ul>
-        <li>All tasks</li>
-        <li>incomplete tasks</li>
-        <li>complete tasks</li>
-      </ul>
+      <li v-for="task in completeTasks">
+        <span>{{ task.description }}</span>
+        <button type="button" @click="toggleCheck(task)">Toggle 🦉</button>
+      </li>
     </ul>
-    <!-- /TODO -->
+    <div style="background: rgba(255, 0, 0, 0.1); padding: 1rem;">
+      <h2>Homework:</h2>
+      <ul>
+        <li>Have a button to toggle a task ✅</li>
+        <li>Have three lists:</li>
+        <ul>
+          <li>All tasks ✅</li>
+          <li>Incomplete tasks ✅</li>
+          <li>Complete tasks ✅</li>
+        </ul>
+      </ul>
+    </div>
   </div>
 
   <!-- Scripts -->
@@ -66,7 +79,18 @@
       computed: {
         incompleteTasks() {
           return this.tasks.filter(task => !task.completed);
-        }
+        },
+        completeTasks() {
+          return this.tasks.filter(task => task.completed);
+        },
+      },
+      methods: {
+        toggleCheck(taskSelected) {
+          this.tasks.forEach(task => {
+            if (task.description == taskSelected.description)
+              task.completed = !task.completed;
+          });
+        },
       },
     });
   </script>
