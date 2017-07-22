@@ -5,10 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Learn Vue 2: Step by Step</title>
+  <link rel="stylesheet" href="./node_modules/bulma/css/bulma.css">
 </head>
 <body>
-  <div id="root">
-
+  <div id="root" class="container" style="padding-top: 2.5rem;">
+    <xi-modal v-show="showModal" @close="showModal = false">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit animi fuga blanditiis quae dignissimos mollitia libero magni architecto, accusamus error voluptas sit harum beatae odio maxime et aperiam quaerat reprehenderit!</p>
+    </xi-modal>
+    <button type="button" @click="showModal = true">Show modal</button>
   </div>
 
   <!-- Scripts -->
