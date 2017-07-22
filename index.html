@@ -8,11 +8,7 @@
 </head>
 <body>
   <div id="root">
-    <ul>
-      <li v-for="name in names" v-text="name"></li>
-    </ul>
-    <input v-model="newName" type="text">
-    <button @click="addName" type="button">Add name</button>
+
   </div>
 
   <!-- Scripts -->
@@ -20,16 +16,7 @@
   <script>
     var app = new Vue({
       el: '#root',
-      data: {
-        newName: '',
-        names: ["joe", "mary", 'jane', 'jack']
-      },
-      methods: {
-        addName() {
-          this.names.push(this.newName);
-          this.newName = '';
-        },
-      },
+      data: {},
     });
   </script>
 </body>
