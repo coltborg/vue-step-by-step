@@ -9,11 +9,13 @@
 </head>
 <body>
   <div id="root" class="container" style="padding-top: 2.5rem;">
-
+    <xi-coupon @applied="onCouponApplied"></xi-coupon>
+    <h1 v-if="couponApplied">You used a coupon!</h1>
   </div>
 
   <!-- Scripts -->
-  <script src="https://unpkg.com/vue@2.4.1"></script>
+  <!-- <script src="https://unpkg.com/vue@2.4.1"></script> -->
+  <script src="./node_modules/vue/dist/vue.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
