@@ -12,5 +12,8 @@
     "browser-sync": "^2.12.5",
     "eslint": "^4.3.0",
     "eslint-plugin-vue": "^2.1.0"
+  },
+  "dependencies": {
+    "bulma": "^0.4.3"
   }
 }
