@@ -9,7 +9,8 @@
 </head>
 <body>
   <div id="root" class="container" style="padding-top: 2.5rem;">
-
+    <coupon @applied="onCouponApplied"></coupon>
+    <h1 v-if="couponApplied">You used a coupon!</h1>
   </div>
 
   <!-- Scripts -->
